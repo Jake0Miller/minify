@@ -6,8 +6,8 @@ defmodule Minify.DomainTest do
   describe "urls" do
     alias Minify.Domain.Url
 
-    @valid_attrs %{long: "some long", short: "some short"}
-    @update_attrs %{long: "some updated long", short: "some updated short"}
+    @valid_attrs %{long: "https://www.turing.io", short: "https://www.minify.com/abc123"}
+    @update_attrs %{long: "https://www.google.com", short: "https://www.minify.com/def456"}
     @invalid_attrs %{long: nil, short: nil}
 
     def url_fixture(attrs \\ %{}) do
@@ -31,8 +31,8 @@ defmodule Minify.DomainTest do
 
     test "create_url/1 with valid data creates a url" do
       assert {:ok, %Url{} = url} = Domain.create_url(@valid_attrs)
-      assert url.long == "some long"
-      assert url.short == "some short"
+      assert url.long == @valid_attrs.long
+      assert url.short == @valid_attrs.short
     end
 
     test "create_url with repeat data fails" do
@@ -47,8 +47,8 @@ defmodule Minify.DomainTest do
     test "update_url/2 with valid data updates the url" do
       url = url_fixture()
       assert {:ok, %Url{} = url} = Domain.update_url(url, @update_attrs)
-      assert url.long == "some updated long"
-      assert url.short == "some updated short"
+      assert url.long == @update_attrs.long
+      assert url.short == @update_attrs.short
     end
 
     test "update_url/2 with invalid data returns error changeset" do

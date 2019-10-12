@@ -36,6 +36,7 @@ defmodule Minify.Domain do
 
   """
   def get_url!(id), do: Repo.get!(Url, id)
+  def get_by!(conditions), do: Repo.get_by!(Url, conditions)
 
   @doc """
   Creates a url.

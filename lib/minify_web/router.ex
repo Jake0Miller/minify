@@ -9,4 +9,8 @@ defmodule MinifyWeb.Router do
     pipe_through :api
     resources "/urls", UrlController
   end
+
+  scope "/", MinifyWeb do
+    get(":path", RedirectController, :show)
+  end
 end
