@@ -7,5 +7,6 @@ defmodule MinifyWeb.Router do
 
   scope "/api", MinifyWeb do
     pipe_through :api
+    resources "/urls", UrlController
   end
 end
